@@ -12,7 +12,9 @@ export default function App() {
   const Stack = createNativeStackNavigator();
 
   return (
+    
     <Provider store={store}>
+      
       <NavigationContainer>
       <SafeAreaProvider>
         <Stack.Navigator>
@@ -35,6 +37,7 @@ export default function App() {
       </NavigationContainer>
       
     </Provider>
+    
     
   );
 }

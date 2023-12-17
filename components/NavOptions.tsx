@@ -3,6 +3,7 @@ import React from 'react'
 import tw from 'twrnc'
 import { Icon } from '@rneui/base'
 import { useNavigation } from '@react-navigation/native'
+import { useAppSelector } from '../hooks'
 
 type DataType = {
     id: string
@@ -29,6 +30,7 @@ const data: DataType[] = [
 const NavOptions = () => {
 
   const navigation = useNavigation();
+  const origin = useAppSelector(state => state.nav.origin);
 
   return (
     <FlatList 
@@ -39,8 +41,9 @@ const NavOptions = () => {
         <TouchableOpacity
           onPress={() => navigation.navigate(item.screen)}
           style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40 mt-12`}
+          disabled={!origin}
         >
-            <View>
+            <View style={!origin && tw`opacity-20`}>
                 <Image 
                   style={{
                     width: 120,

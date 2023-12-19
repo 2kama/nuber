@@ -7,6 +7,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { GOOGLE_MAPS_APIKEY } from 'react-native-dotenv'
 import { useAppDispatch } from '../hooks';
 import { setDestination, setOrigin } from '../slices/navSlice';
+import NavFovourites from '../components/NavFovourites';
 
 const HomeScreen = () => {
   const dispatch = useAppDispatch();
@@ -47,6 +48,7 @@ const HomeScreen = () => {
         </View>
 
         <NavOptions />
+        <NavFovourites />
       </View>
     </SafeAreaView>
   )

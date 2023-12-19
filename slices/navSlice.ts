@@ -4,46 +4,56 @@ import type { RootState } from "../store";
 import { Point } from "react-native-google-places-autocomplete";
 
 type locationType = {
-    location: Point | undefined
-    description: string
+  location: Point | undefined;
+  description: string;
+};
+
+type TravelInfoType = {
+    text: string
+    value: number
+}
+
+type MapsMatrixType = {
+  distance: TravelInfoType
+  duration: TravelInfoType
+  status: string
 }
 
 type NavStateType = {
-    origin: null | locationType
-    destination: null | locationType
-    travelTimeInformation: null | any
-}
+  origin: null | locationType;
+  destination: null | locationType;
+  travelTimeInformation: null | MapsMatrixType;
+};
 
 const initialState: NavStateType = {
-    origin: null,
-    destination: null,
-    travelTimeInformation: null,
-}
+  origin: null,
+  destination: null,
+  travelTimeInformation: null,
+};
 
 export const navSlice = createSlice({
-    name: 'nav',
-    initialState,
-    reducers: {
-        setOrigin: (state, action: PayloadAction<locationType | null>) => {
-            state.origin = action.payload;
-        },
-        setDestination: (state, action: PayloadAction<locationType | null>) => {
-            state.destination = action.payload;
-        },
-        setTravelTimeInformation: (state, action: PayloadAction<any>) => {
-            state.travelTimeInformation = action.payload;
-        },
-    }
+  name: "nav",
+  initialState,
+  reducers: {
+    setOrigin: (state, action: PayloadAction<locationType | null>) => {
+      state.origin = action.payload;
+    },
+    setDestination: (state, action: PayloadAction<locationType | null>) => {
+      state.destination = action.payload;
+    },
+    setTravelTimeInformation: (state, action: PayloadAction<MapsMatrixType | null>) => {
+      state.travelTimeInformation = action.payload;
+    },
+  },
 });
 
-
-export const { setOrigin, setDestination, setTravelTimeInformation } = navSlice.actions;
+export const { setOrigin, setDestination, setTravelTimeInformation } =
+  navSlice.actions;
 
 // Selectors
 export const selectOrigin = (state: RootState) => state.nav.origin;
 export const selectDestination = (state: RootState) => state.nav.destination;
-export const selectTravelTimeInformation = (state: RootState) => state.nav.travelTimeInformation;
+export const selectTravelTimeInformation = (state: RootState) =>
+  state.nav.travelTimeInformation;
 
 export default navSlice.reducer;
-
-

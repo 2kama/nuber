@@ -1,15 +1,15 @@
-import { View, Text, SafeAreaView } from 'react-native'
-import React from 'react'
-import tw from 'twrnc'
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
+import { View, Text, SafeAreaView } from "react-native";
+import React from "react";
+import tw from "twrnc";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 // @ts-ignore
-import { GOOGLE_MAPS_APIKEY } from 'react-native-dotenv'
-import { useAppDispatch } from '../hooks'
-import { setDestination } from '../slices/navSlice'
-import { useNavigation } from '@react-navigation/native'
-import NavFovourites from './NavFovourites'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import { Icon } from '@rneui/base'
+import { GOOGLE_MAPS_APIKEY } from "react-native-dotenv";
+import { useAppDispatch } from "../hooks";
+import { setDestination } from "../slices/navSlice";
+import { useNavigation } from "@react-navigation/native";
+import NavFovourites from "./NavFovourites";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Icon } from "@rneui/base";
 
 const NavigateCard = () => {
   const dispatch = useAppDispatch();
@@ -21,8 +21,8 @@ const NavigateCard = () => {
       <View style={tw`border-t border-gray-200 flex-shrink`}>
         <View>
           <GooglePlacesAutocomplete
-            placeholder='Where to?'
-            nearbyPlacesAPI='GooglePlacesSearch'
+            placeholder="Where to?"
+            nearbyPlacesAPI="GooglePlacesSearch"
             debounce={400}
             styles={{
               container: {
@@ -38,21 +38,23 @@ const NavigateCard = () => {
               textInputContainer: {
                 paddingHorizontal: 20,
                 paddingBottom: 0,
-              }
+              },
             }}
             query={{
-                key: GOOGLE_MAPS_APIKEY,
-                language: 'en',
-              }}
+              key: GOOGLE_MAPS_APIKEY,
+              language: "en",
+            }}
             minLength={2}
             enablePoweredByContainer={false}
             fetchDetails={true}
             onPress={(data, details = null) => {
-              dispatch(setDestination({
-                location: details?.geometry.location,
-                description: data.description
-              }))
-              navigation.navigate('RideOptionsCard')
+              dispatch(
+                setDestination({
+                  location: details?.geometry.location,
+                  description: data.description,
+                })
+              );
+              navigation.navigate("RideOptionsCard");
             }}
           />
         </View>
@@ -60,19 +62,30 @@ const NavigateCard = () => {
         <NavFovourites />
       </View>
 
-      <View style={tw`flex-row bg-white justify-evenly py-2 mt-auto border-t border-gray-100`}>
-        <TouchableOpacity style={tw`flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full`}>
+      <View
+        style={tw`flex-row bg-white justify-evenly py-2 mt-auto border-t border-gray-100`}
+      >
+        <TouchableOpacity
+          style={tw`flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full`}
+        >
           <Icon name="car" type="font-awesome" color="white" size={16} />
           <Text style={tw`text-white text-center`}>Rides</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={tw`flex flex-row justify-between w-24 px-4 py-3 rounded-full`}>
-          <Icon name="fast-food-outline" type="ionicon" color="black" size={16} />
+        <TouchableOpacity
+          style={tw`flex flex-row justify-between w-24 px-4 py-3 rounded-full`}
+        >
+          <Icon
+            name="fast-food-outline"
+            type="ionicon"
+            color="black"
+            size={16}
+          />
           <Text style={tw`text-center`}>Eats</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default NavigateCard
+export default NavigateCard;

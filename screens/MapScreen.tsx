@@ -1,16 +1,25 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import tw from "twrnc";
 import Map from "../components/Map";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import NavigateCard from "../components/NavigateCard";
 import RideOptionsCard from "../components/RideOptionsCard";
+import { Icon } from "@rneui/base";
+import { useNavigation } from "@react-navigation/native";
 
 const MapScreen = () => {
   const Stack = createNativeStackNavigator();
+  const navigation = useNavigation();
 
   return (
     <View>
+
+      <TouchableOpacity 
+      onPress={() => navigation.navigate("HomeScreen")}
+      style={tw`absolute top-10 left-8 z-1 p-3 rounded-full shadow-lg bg-gray-100`}>
+        <Icon name="chevron-left" />
+      </TouchableOpacity>
       <View style={tw`h-2/5`}>
         <Map />
       </View>

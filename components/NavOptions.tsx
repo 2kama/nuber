@@ -16,13 +16,13 @@ const data: DataType[] = [
   {
     id: "123",
     title: "Get a ride",
-    image: "https://links.papareact.com/3pn",
+    image: "https://rb.gy/3vdm1n",
     screen: "MapScreen",
   },
   {
     id: "456",
     title: "Order Food",
-    image: "https://links.papareact.com/28w",
+    image: "https://rb.gy/stgras",
     screen: "EatsScreen",
   },
 ];

@@ -4,7 +4,7 @@ import tw from "twrnc";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 // @ts-ignore
 import { GOOGLE_MAPS_APIKEY } from "react-native-dotenv";
-import { useAppDispatch } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import { setDestination } from "../slices/navSlice";
 import { useNavigation } from "@react-navigation/native";
 import NavFovourites from "./NavFovourites";
@@ -14,6 +14,7 @@ import { Icon } from "@rneui/base";
 const NavigateCard = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
+  const destination = useAppSelector(state => state.nav.destination);
 
   return (
     <SafeAreaView style={tw`bg-white flex-1`}>
@@ -67,6 +68,8 @@ const NavigateCard = () => {
       >
         <TouchableOpacity
           style={tw`flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full`}
+          onPress={() => navigation.navigate("RideOptionsCard")}
+          disabled={!destination}
         >
           <Icon name="car" type="font-awesome" color="white" size={16} />
           <Text style={tw`text-white text-center`}>Rides</Text>
@@ -74,6 +77,7 @@ const NavigateCard = () => {
 
         <TouchableOpacity
           style={tw`flex flex-row justify-between w-24 px-4 py-3 rounded-full`}
+          onPress={() => navigation.navigate("EatsScreen")}
         >
           <Icon
             name="fast-food-outline"

@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MapScreen from "./screens/MapScreen";
 import "react-native-gesture-handler";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import EatsScreen from "./screens/EatsScreen";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -33,6 +34,13 @@ export default function App() {
                 <Stack.Screen
                   name="MapScreen"
                   component={MapScreen}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <Stack.Screen
+                  name="EatsScreen"
+                  component={EatsScreen}
                   options={{
                     headerShown: false,
                   }}

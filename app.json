@@ -48,13 +48,12 @@
             "deploymentTarget": "17.0"
           }
         }
-      ],
-      [
-        "expo-location",
-        {
-          "locationAlwaysAndWhenInUsePermission": "Allow ${PRODUCT_NAME} to use your location."
-        }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "e5b3da7f-8307-4bea-b9c6-0290b9a07071"
+      }
+    }
   }
 }

@@ -9,22 +9,52 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "buildNumber": "1",
+      "bundleIdentifier": "io.kama.nuber"
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#000000"
+      },
+      "package": "io.kama.nuber"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "owner": "mish_kama",
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 33,
+            "targetSdkVersion": 33,
+            "compileSdkVersion": 33,
+            "buildToolsVersion": "34.0.0"
+          },
+          "ios": {
+            "deploymentTarget": "17.0"
+          }
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow ${PRODUCT_NAME} to use your location."
+        }
+      ]
+    ]
   }
 }

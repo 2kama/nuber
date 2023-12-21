@@ -3,8 +3,6 @@ import React from "react";
 import tw from "twrnc";
 import NavOptions from "../components/NavOptions";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-// @ts-ignore
-import { GOOGLE_MAPS_APIKEY } from "react-native-dotenv";
 import { useAppDispatch } from "../hooks";
 import { setDestination, setOrigin } from "../slices/navSlice";
 import NavFovourites from "../components/NavFovourites";
@@ -19,7 +17,7 @@ const HomeScreen = () => {
         <View>
           <GooglePlacesAutocomplete
             nearbyPlacesAPI="GooglePlacesSearch"
-            debounce={400}
+            debounce={100}
             placeholder="Where From?"
             fetchDetails={true}
             onPress={(data, details = null) => {
@@ -41,7 +39,7 @@ const HomeScreen = () => {
               },
             }}
             query={{
-              key: GOOGLE_MAPS_APIKEY,
+              key: "GOOGLE MAPS API KEY",
               language: "en",
             }}
             minLength={2}

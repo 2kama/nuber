@@ -14,16 +14,22 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "buildNumber": "1",
-      "bundleIdentifier": "io.kama.nuber"
+      "bundleIdentifier": "io.kama.nuber",
+      "config": {
+        "googleMapsApiKey": "GOOGLE MAPS API KEY"
+      }
     },
     "android": {
       "versionCode": 1,
+      "config": {
+        "googleMaps": {
+          "apiKey": "GOOGLE MAPS API KEY"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#000000"

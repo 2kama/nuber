@@ -2,8 +2,6 @@ import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
 import tw from "twrnc";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-// @ts-ignore
-import { GOOGLE_MAPS_APIKEY } from "react-native-dotenv";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { setDestination } from "../slices/navSlice";
 import { useNavigation } from "@react-navigation/native";
@@ -14,7 +12,7 @@ import { Icon } from "@rneui/base";
 const NavigateCard = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
-  const destination = useAppSelector(state => state.nav.destination);
+  const destination = useAppSelector((state) => state.nav.destination);
 
   return (
     <SafeAreaView style={tw`bg-white flex-1`}>
@@ -24,7 +22,7 @@ const NavigateCard = () => {
           <GooglePlacesAutocomplete
             placeholder="Where to?"
             nearbyPlacesAPI="GooglePlacesSearch"
-            debounce={400}
+            debounce={100}
             styles={{
               container: {
                 backgroundColor: "white",
@@ -42,7 +40,7 @@ const NavigateCard = () => {
               },
             }}
             query={{
-              key: GOOGLE_MAPS_APIKEY,
+              key: "GOOGLE MAPS API KEY",
               language: "en",
             }}
             minLength={2}

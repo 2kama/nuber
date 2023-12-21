@@ -4,8 +4,6 @@ import MapView, { Marker } from "react-native-maps";
 import tw from "twrnc";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import MapViewDirections from "react-native-maps-directions";
-// @ts-ignore
-import { GOOGLE_MAPS_APIKEY } from "react-native-dotenv";
 import { setTravelTimeInformation } from "../slices/navSlice";
 
 const Map = () => {
@@ -32,21 +30,22 @@ const Map = () => {
 
     const getTravelTime = async () => {
       fetch(
-        `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${origin.description}&destinations=${destination.description}&key=${GOOGLE_MAPS_APIKEY}`
+        `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${origin.description}&destinations=${destination.description}&key=GOOGLE MAPS API KEY`
       )
         .then((res) => res.json())
-        .then((data) => dispatch(setTravelTimeInformation(data.rows[0].elements[0]))
+        .then((data) =>
+          dispatch(setTravelTimeInformation(data.rows[0].elements[0]))
         );
     };
 
     getTravelTime();
-  }, [origin, destination, GOOGLE_MAPS_APIKEY]);
+  }, [origin, destination]);
 
   return (
     <MapView
       ref={mapRef}
       style={tw`flex-1`}
-      mapType="mutedStandard"
+      mapType="standard"
       initialRegion={{
         latitude: origin!.location!.lat,
         longitude: origin!.location!.lng,
@@ -58,7 +57,7 @@ const Map = () => {
         <MapViewDirections
           origin={origin.description}
           destination={destination.description}
-          apikey={GOOGLE_MAPS_APIKEY}
+          apikey="GOOGLE MAPS API KEY"
           strokeWidth={3}
           strokeColor="black"
         />

@@ -65,7 +65,7 @@ const RideOptionsCard = () => {
           travelTimeInformation.status === "ZERO_RESULTS"
             ? "Impossible Road Route"
             : `Select a Ride - ${
-                travelTimeInformation && travelTimeInformation?.distance?.text
+                travelTimeInformation?.distance?.text || "..."
               }`}
         </Text>
       </View>
